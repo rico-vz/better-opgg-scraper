@@ -5,6 +5,8 @@ An improved promised based scraper for the League of Legends stat site <https://
 
 Working with the latest OP.GG UI & URL Update (Oct 4th 2022)
 
+https://www.npmjs.com/package/better-opgg-scraper
+
 ## Installation
 
 npm i better-opgg-scraper
