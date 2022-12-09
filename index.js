@@ -5,13 +5,19 @@
 const puppeteer = require("puppeteer-extra");
 const AdblockerPlugin = require("puppeteer-extra-plugin-adblocker");
 puppeteer.use(AdblockerPlugin());
+
 /**
  * @param  {} user The summoner name of the account you want to scrape data of.
  * @param  {} region The region of the account you want to scrape data of.
  */
+
 exports.getStats = async (user, region) => {
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+      headless: true,
+      channel: "chrome",
+    });
+
     const context = browser.defaultBrowserContext();
     context.overridePermissions(`https://${region}.op.gg`, [
       "geolocation",
@@ -72,9 +78,14 @@ exports.getStats = async (user, region) => {
       SummonerIcon: image,
       RecentlyPlayedWith: recentlyPlayedWith,
     };
+
+    console.log(stats);
+
     await browser.close();
     return stats;
   } catch (e) {
     console.error(e);
   }
 };
+
+this.getStats("Rico", "euw");
