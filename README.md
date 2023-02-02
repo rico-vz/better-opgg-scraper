@@ -12,13 +12,13 @@ https://www.npmjs.com/package/better-opgg-scraper
 npm i better-opgg-scraper
 
 ```javascript
- const opggScrape = require('opgg-duo-scraper'); 
+ const opggScrape = require('better-opgg-scraper'); 
 ```
 
 ## Usage/Examples
 
 ```javascript
-const opggScrape = require('opgg-duo-scraper');
+const opggScrape = require('better-opgg-scraper');
 
 opggScrape.getStats('built', 'euw').
     then(stats => console.log(stats))   
