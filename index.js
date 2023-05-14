@@ -1,5 +1,5 @@
 /**
- * @author Rico <rspam@tutanota.com>
+ * @author Rico van Zelst
  */
 
 const puppeteer = require("puppeteer-extra");
@@ -19,7 +19,7 @@ exports.getStats = async (user, region) => {
     });
 
     const context = browser.defaultBrowserContext();
-    context.overridePermissions(`https://${region}.op.gg`, [
+    context.overridePermissions(`https://www.op.gg`, [
       "geolocation",
       "notifications",
     ]);
@@ -27,7 +27,7 @@ exports.getStats = async (user, region) => {
 
     await page.goto(`https://www.op.gg/summoners/${region}/${user}`);
 
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1250);
 
     const level = await page
       .$eval(".level", (e) => e.innerText)
@@ -79,13 +79,10 @@ exports.getStats = async (user, region) => {
       RecentlyPlayedWith: recentlyPlayedWith,
     };
 
-    console.log(stats);
-
     await browser.close();
+    
     return stats;
   } catch (e) {
     console.error(e);
   }
 };
-
-this.getStats("Rico", "euw");
