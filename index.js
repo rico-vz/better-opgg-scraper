@@ -27,7 +27,7 @@ exports.getStats = async (user, region) => {
 
     await page.goto(`https://www.op.gg/summoners/${region}/${user}`);
 
-    await page.waitForTimeout(1250);
+    await page.waitForTimeout(1275);
 
     const level = await page
       .$eval(".level", (e) => e.innerText)
